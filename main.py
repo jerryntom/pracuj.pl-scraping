@@ -88,7 +88,7 @@ df.to_excel(r'jobOffers.xlsx', index=False)
 message = MIMEMultipart()
 message['From'] = senderAndress
 message['To'] = receiverAddress
-message['Subject'] = searchKeyword + " pracuj.pl - "+searchLocation + " - najnowsze oferty pracy! " + currentDate 
+message['Subject'] = searchKeyword + " pracuj.pl - " + searchLocation + " - najnowsze oferty pracy! " + currentDate 
 
 # Attach jobOffers.xlsx
 jobOffersExcelFile = MIMEBase('application', "octet-stream")
