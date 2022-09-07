@@ -14,11 +14,13 @@ from datetime import date, datetime
 
 now = datetime.now()
 currentDate = now.strftime("%d/%m/%Y")
-searchKeyword = "JavaScript"
-searchLocation = "Warszawa"
-adblockPath = r"C:\Users\nazyw\AppData\Local\Google\Chrome\User Data\Default\Extensions\gighmmpiobklfepjocnamgkkbiglidom\5.1.1_0"
+
+# please modify these variables
+searchKeyword = "?"
+searchLocation = "?"
+adblockPath = r"?"
 senderAndress = "?"
-senderKey = "?"
+senderKey = "?" 
 receiverAddress = "?"
 
 # setting up chrome 

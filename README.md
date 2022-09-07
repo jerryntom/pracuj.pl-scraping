@@ -1,9 +1,9 @@
-# Simple example of web scraping with Selenium in Python  
+# ⭐ Simple example of web scraping with Selenium in Python  
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3KAJXTAYQC7BW)
 
 Support open source software and help me in further development. Thank you for every donation and star!
 
-### What is it? 
+### 💡 What is it? 
 The program make automated search on pracuj.pl website to find interesting job offers according to keyword and location. Then, each job offer from search result is being collected. Subsequently result is exported through Pandas to create beautiful .xlsx file full of job offers. At the final step the .xlsx file is send to given email. 
 
 We are starting here:<br>
@@ -12,7 +12,7 @@ To get the result:<br>
 ![mail result - received job offers](./readmeImages/mailResult.png "mail result - received job offers")<br>
 ![excel result- received job offers](./readmeImages/excelResult.png "excel result - received job offers")
 
-### How it works?
+### :gear: How it works?
 ! The automation happens with use of Selenium.<br><br>
 We want to get to the section with advanced search and do appropriate scraping of job offers. 
 1. Find advanced search and click it.<br>
@@ -33,9 +33,17 @@ If there is more than one page of result: find next page button and until exists
 ![mail result - received job offers](./readmeImages/mailResult.png "mail result - received job offers")
 ![excel result- received job offers](./readmeImages/excelResult.png "excel result - received job offers")
 
-### How to use it? 
+### :thinking: How to use it? 
 * Setup a virtual envinronment inside clone directory
 * Install modules from requirements.txt with:
     pip install -r requirements.txt
+* Update variables: 
+    * searchKeyword 
+    * searchLocation
+    * adblockPath - my is:<br>
+        C:\Users\nazyw\AppData\Local\Google\Chrome\User Data\Default\Extensions\gighmmpiobklfepjocnamgkkbiglidom\5.1.1_0
+    * senderAndress 
+    * senderKey - app key from you gmail account to authenticate use of your gmail account (e.g. Gmail, can be other)
+    * receiverAddress 
 * Run main.py in IDE of your choice 
 * Admire how amazing Selenium is 
