@@ -1,4 +1,3 @@
-from time import strftime
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
@@ -10,27 +9,32 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
-from datetime import date, datetime
+from datetime import datetime
+from os import listdir
 
 now = datetime.now()
 currentDate = now.strftime("%d/%m/%Y")
 
-# please modify these variables
+# Please modify these variables
 searchKeyword = "?"
 searchLocation = "?"
-adblockPath = r"?"
-senderAndress = "?"
-senderKey = "?" 
+senderAddress = "?"
+senderKey = "?"
 receiverAddress = "?"
+adBlockPath = r"C:\Users\nazyw\AppData\Local\Google\Chrome\User Data\Default\Extensions\gighmmpiobklfepjocnamgkkbiglidom"
 
-# setting up chrome 
+# Set up AdBlock 
+adBlockVersion = "\\" + listdir(adBlockPath)[0]
+adBlockPath += adBlockVersion
+
+# Set up Chrome 
 chromeOptions = Options()
 chromeOptions.add_experimental_option("detach", True)
-chromeOptions.add_argument("load-extension=" + adblockPath)
+chromeOptions.add_argument("load-extension=" + adBlockPath)
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=chromeOptions)
 driver.maximize_window()
 
-# go to site and show results according to given keyword and location
+# Go to site and show results according to given keyword and location
 driver.get("https://pracuj.pl")
 driver.switch_to.window(driver.window_handles[0])
 WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Akceptuj wszystkie')]"))).click()
@@ -58,7 +62,7 @@ WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//button[
 
 jobOffersList = []
 
-# collect each job offer from every available page of search result
+# Collect each job offer from every available page of search result
 while True:
     jobOffers = driver.find_elements(By.CLASS_NAME, "offer__info")
 
@@ -74,7 +78,7 @@ while True:
             }
         jobOffersList.append(jobOfferListElement)
     
-    # last page detection
+    # Last page detection
     try:
         nextPageButton = driver.find_element(By.CSS_SELECTOR, "li[class='pagination_element pagination_element--next']")
         nextPageButton.click()
@@ -88,7 +92,7 @@ df.to_excel(r'jobOffers.xlsx', index=False)
 
 # Build email message 
 message = MIMEMultipart()
-message['From'] = senderAndress
+message['From'] = senderAddress
 message['To'] = receiverAddress
 message['Subject'] = searchKeyword + " pracuj.pl - " + searchLocation + " - najnowsze oferty pracy! " + currentDate 
 
@@ -102,9 +106,9 @@ message.attach(jobOffersExcelFile)
 # Make secure connetion with smtp server through TLS and send a complete message
 session = smtplib.SMTP('smtp.gmail.com', 587) 
 session.starttls() 
-session.login(senderAndress, senderKey) 
+session.login(senderAddress, senderKey) 
 messageAsText = message.as_string()
-session.sendmail(senderAndress, receiverAddress, messageAsText)
+session.sendmail(senderAddress, receiverAddress, messageAsText)
 session.quit()
 print('Mail sent to ' + receiverAddress)
 

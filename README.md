@@ -41,8 +41,8 @@ If there is more than one page of result: find next page button and until exists
     * searchKeyword 
     * searchLocation
     * adblockPath - my is:<br>
-        C:\Users\nazyw\AppData\Local\Google\Chrome\User Data\Default\Extensions\gighmmpiobklfepjocnamgkkbiglidom\5.1.1_0
-    * senderAndress 
+        C:\Users\nazyw\AppData\Local\Google\Chrome\User Data\Default\Extensions\gighmmpiobklfepjocnamgkkbiglidom
+    * senderAddress 
     * senderKey - app key from you gmail account to authenticate use of your gmail account (e.g. Gmail, can be other)
     * receiverAddress 
 * Run main.py in IDE of your choice 
