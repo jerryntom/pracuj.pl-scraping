@@ -1,5 +1,6 @@
 # ⭐ Simple example of web scraping with Selenium in Python  
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3KAJXTAYQC7BW)
+# PROJECT IS OUT OF MAINTENANCE
 
 Support open source software and help me in further development. Thank you for every donation and star!
 
